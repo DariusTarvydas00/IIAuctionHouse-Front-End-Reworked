@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 //http
 import { HttpClientModule} from "@angular/common/http";
+import {WelcomeModule} from "./welcome/welcome.module";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    WelcomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
