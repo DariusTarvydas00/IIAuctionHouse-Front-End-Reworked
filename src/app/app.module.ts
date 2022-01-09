@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 //Routing
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 //http
 import { HttpClientModule} from "@angular/common/http";
 import {WelcomeModule} from "./welcome/welcome.module";
+import { SharedModule } from "./shared/shared.module";
 
 
 @NgModule({
@@ -21,9 +21,9 @@ import {WelcomeModule} from "./welcome/welcome.module";
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    BrowserAnimationsModule,
     HttpClientModule,
-    WelcomeModule
+    WelcomeModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
