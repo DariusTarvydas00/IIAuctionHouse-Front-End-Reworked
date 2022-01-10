@@ -1,4 +1,5 @@
 export interface ForestLocationDto {
   id: number;
-  forestryEnterprise: string;
+  geoLocationX: number;
+  geoLocationY: number;
 }

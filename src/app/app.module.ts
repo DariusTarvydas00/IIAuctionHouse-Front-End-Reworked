@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
 
 //http
 import { HttpClientModule} from "@angular/common/http";
-import {WelcomeModule} from "./welcome/welcome.module";
 import { SharedModule } from "./shared/shared.module";
 
 
@@ -22,7 +21,6 @@ import { SharedModule } from "./shared/shared.module";
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    WelcomeModule,
     SharedModule
   ],
   providers: [],
