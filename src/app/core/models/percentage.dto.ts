@@ -1,4 +1,4 @@
 export interface PercentageDto {
-  id: number;
+  Id: number;
   value: number;
 }
