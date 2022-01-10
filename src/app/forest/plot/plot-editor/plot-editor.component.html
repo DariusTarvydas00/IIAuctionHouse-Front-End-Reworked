@@ -1,0 +1,144 @@
+<div class="register-form">
+  <form [formGroup]="plotForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Size:</label>
+      <input type="number" formControlName="plotSize" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && plotFormValue['plotSize'].errors }">
+    </div>
+    <div *ngIf="submitted && plotFormValue['plotSize'].errors" class="invalid-feedback">
+      <div *ngIf="plotFormValue['plotSize'].errors['required']">Plot size is required</div>
+      <div *ngIf="plotFormValue['plotSize'].errors['min']">Minimum plot size value allowed is 0.1</div>
+      <div *ngIf="plotFormValue['plotSize'].errors['max']">Maximum plot size value allowed is 99</div>
+      <div *ngIf="plotFormValue['plotSize'].errors['pattern']">Username must not contain characters or numbers</div>
+    </div>
+
+    <div class="form-group">
+      <label>Resolution:</label>
+      <input type="text" formControlName="plotResolution" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && plotFormValue['plotResolution'].errors }">
+    </div>
+    <div *ngIf="submitted && plotFormValue['plotResolution'].errors" class="invalid-feedback">
+      <div *ngIf="plotFormValue['plotResolution'].errors['required']">Plot resolution is required</div>
+      <div *ngIf="plotFormValue['plotResolution'].errors['minlength']">Plot resolution must be at least 2 characters</div>
+      <div *ngIf="plotFormValue['plotResolution'].errors['maxlength']">Plot resolution must not exceed 20 characters</div>
+      <div *ngIf="plotFormValue['plotResolution'].errors['pattern']">Plot resolution must not contain symbols</div>
+    </div>
+
+    <div class="form-group">
+      <label>Tenderness:</label>
+      <input type="number" formControlName="plotTenderness" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && plotFormValue['plotTenderness'].errors }">
+    </div>
+    <div *ngIf="submitted && plotFormValue['plotTenderness'].errors" class="invalid-feedback">
+      <div *ngIf="plotFormValue['plotTenderness'].errors['required']">Plot tenderness is required</div>
+      <div *ngIf="plotFormValue['plotTenderness'].errors['min']">Minimum Plot tenderness value allowed is 0.1</div>
+      <div *ngIf="plotFormValue['plotTenderness'].errors['max']">Maximum Plot tenderness value allowed is 99</div>
+      <div *ngIf="plotFormValue['plotTenderness'].errors['pattern']">Plot tenderness must not contain characters or letters</div>
+    </div>
+
+    <div class="form-group">
+      <label>Volume:</label>
+      <input type="number" formControlName="volume" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && plotFormValue['volume'].errors }">
+    </div>
+    <div *ngIf="submitted && plotFormValue['volume'].errors" class="invalid-feedback">
+      <div *ngIf="plotFormValue['volume'].errors['required']">Plot Volume is required</div>
+      <div *ngIf="plotFormValue['volume'].errors['min']">Minimum Plot Volume value allowed is 1</div>
+      <div *ngIf="plotFormValue['volume'].errors['max']">Maximum Plot Volume value allowed is 9999</div>
+      <div *ngIf="plotFormValue['volume'].errors['pattern']">Plot Volume must not contain characters or letters</div>
+    </div>
+
+    <div class="form-group">
+      <label>Average Tree Height:</label>
+      <input type="number" formControlName="averageTreeHeight" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && plotFormValue['averageTreeHeight'].errors }">
+    </div>
+    <div *ngIf="submitted && plotFormValue['averageTreeHeight'].errors" class="invalid-feedback">
+      <div *ngIf="plotFormValue['averageTreeHeight'].errors['required']">Plot Volume is required</div>
+      <div *ngIf="plotFormValue['averageTreeHeight'].errors['min']">Minimum Plot Volume value allowed is 1</div>
+      <div *ngIf="plotFormValue['averageTreeHeight'].errors['max']">Maximum Plot Volume value allowed is 9999</div>
+      <div *ngIf="plotFormValue['averageTreeHeight'].errors['pattern']">Plot Volume must not contain characters or letters</div>
+    </div>
+
+
+
+<!--treeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+<!--    <form [formGroup]="treeForm">-->
+<!--      <div class="form-group">-->
+<!--        <input type="number" formControlName="id" class="form-control">-->
+<!--        <input type="text" formControlName="name" class="form-control">-->
+<!--      </div>-->
+<!--  </form>-->
+<!--    <form [formGroup]="percentageForm">-->
+<!--      <div class="form-group">-->
+<!--        <input type="number" formControlName="id" class="form-control">-->
+<!--        <input type="number" formControlName="value" class="form-control">-->
+<!--      </div>-->
+<!--    </form>-->
+
+<!--tttttttttttttttttttttttttttttttttttttttttttttttttttt-->
+    <div class="form-group">
+      <button type="submit" class="btn btn-secondary" > Add New Plot </button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-info float-right">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<div class="form-group">
+</div>
+
+<form [formGroup]="treeTypeForm" >
+
+  <div formGroupName="tree">
+    <div class="form-group">
+      <label for="tre">id</label>
+      <input type="number" id="tre" value="id" formControlName="id" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="nam">Username</label>
+      <input type="text" id="nam" value="name" formControlName="name" class="form-control">
+    </div>
+  </div>
+  <div formGroupName="percentage">
+    <div class="form-group">
+      <label for="perc">id</label>
+      <input type="number" id="perc" value="id" formControlName="id" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="val">name</label>
+      <input type="number" id="val" value="value" formControlName="value" class="form-control">
+    </div>
+</div>
+</form>
+
+
+<form [formGroup]="plotForm" >
+  <form [formGroup]="treeTypeForm" >
+  <div formGroupName="tree">
+    <div class="form-group">
+      <label for="tres">id</label>
+      <input type="number" id="tres" value="id" formControlName="id" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="nams">Username</label>
+      <input type="text" id="nams" value="name" formControlName="name" class="form-control">
+    </div>
+  </div>
+  <div formGroupName="percentage">
+    <div class="form-group">
+      <label for="percs">id</label>
+      <input type="number" id="percs" value="id" formControlName="id" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="vals">name</label>
+      <input type="number" id="vals" value="value" formControlName="value" class="form-control">
+    </div>
+  </div>
+  </form>
+</form>

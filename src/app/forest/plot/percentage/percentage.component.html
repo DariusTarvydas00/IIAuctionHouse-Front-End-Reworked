@@ -1,0 +1,55 @@
+<div>
+  <ul class="list-group" *ngIf="percentages$ | async as percentages">
+  <span *ngIf="percentages && percentages.length > 0 else noPercentages">
+    <select [ngModel]="percentageSelection" (ngModelChange)="onChange($event)">
+      <option disabled selected value="undefined">Choose Percentage...</option>
+      <option *ngFor="let percentage of percentages" [ngValue]="percentage">
+        {{percentage.value}}
+      </option>
+    </select>
+  </span>
+  </ul>
+</div>
+
+<br>
+
+<div>
+  <button type="button" class="btn btn-outline-danger" (click)="delete()">Delete</button>
+</div>
+
+<br>
+
+<div class="register-form">
+  <form [formGroup]="percentageForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Percentage Value:</label>
+      <input type="number" formControlName="value" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && percentageFormValue['value'].errors }">
+    </div>
+    <div *ngIf="submitted && percentageFormValue['value'].errors" class="invalid-feedback">
+      <div *ngIf="percentageFormValue['value'].errors['required']">Percentage value is required</div>
+      <div *ngIf="percentageFormValue['value'].errors['min']">Percentage minimum value is 1</div>
+      <div *ngIf="percentageFormValue['value'].errors['max']">Percentage maximum value is 9999</div>
+      <div *ngIf="percentageFormValue['value'].errors['pattern']">Percentage value must not contain characters or letters</div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-secondary" > Add </button>  &nbsp;&nbsp;
+      <button type="button" class="btn btn-outline-danger" (click)="update()" > Update </button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-info float-right">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
+
+<ng-template #noPercentages>
+  <h5>No Trees found</h5>
+</ng-template>
+
+<ng-template #loading>
+  <p *ngIf="!error else errorTemp">....loading</p>
+  <ng-template #errorTemp>{{error?.message}}</ng-template>
+</ng-template>
