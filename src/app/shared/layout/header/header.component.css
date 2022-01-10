@@ -1,0 +1,11 @@
+body{
+  background: rgba(33,49,67,0.78);
+  padding: 25px;
+}
+
+*{
+  height: 50px;
+}
+.mat-tab-group {
+  margin-bottom: 48px;
+}

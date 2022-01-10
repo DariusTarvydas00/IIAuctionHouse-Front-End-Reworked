@@ -1,0 +1,65 @@
+<div>
+  <ul class="list-group" *ngIf="trees$ | async as trees">
+  <span *ngIf="trees && trees.length > 0 else noTrees">
+    <select [ngModel]="treeSelection" (ngModelChange)="onChange($event)">
+      <option disabled selected value="undefined">Choose TreeType...</option>
+      <option *ngFor="let tree of trees" [ngValue]="tree">
+        {{tree.name}}
+      </option>
+    </select>
+  </span>
+  </ul>
+</div>
+
+<br>
+
+<div>
+  <button type="button" class="btn btn-outline-danger" (click)="delete()">Delete</button>
+</div>
+
+<br>
+
+<div class="register-form">
+    <form [formGroup]="treeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Tree Name:</label>
+        <input type="text" formControlName="name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && treeFormValue['name'].errors }">
+      </div>
+      <div *ngIf="submitted && treeFormValue['name'].errors" class="invalid-feedback">
+        <div *ngIf="treeFormValue['name'].errors['required']">Tree name is required</div>
+        <div *ngIf="treeFormValue['name'].errors['minlength']">Tree Name must be at least 2 characters</div>
+        <div *ngIf="treeFormValue['name'].errors['maxlength']">Username must not exceed 20 characters</div>
+        <div *ngIf="treeFormValue['name'].errors['pattern']">Username must not contain characters or numbers</div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-secondary" > Add </button>  &nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-danger" (click)="update()" > Update </button>
+        <button
+          type="button"
+          (click)="onReset()"
+          class="btn btn-info float-right">
+          Reset
+        </button>
+      </div>
+    </form>
+</div>
+
+<ng-template #noTrees>
+  <h5>No Trees found</h5>
+</ng-template>
+
+<ng-template #loading>
+  <p *ngIf="!error else errorTemp">....loading</p>
+  <ng-template #errorTemp>{{error?.message}}</ng-template>
+</ng-template>
+
+<!--<form [formGroup]="treeTypeForm" (ngSubmit)="onSubmit()">-->
+<!--  <p>-->
+<!--    <label for="treeType">Tree Type: </label>-->
+<!--    <input type="string" id="treeType" name="treeType" formControlName="name">-->
+<!--    <md-input-container [formGroup]="percentageForm"> &lt;!&ndash; Mark the nested formgroup name &ndash;&gt;-->
+<!--      <input mdInput type="number" placeholder="id" name="plotTreePercentage"-->
+<!--             formControlName="plotTreePercentage">-->
+<!--    </md-input-container>-->
+<!--  </p>-->

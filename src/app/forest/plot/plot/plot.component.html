@@ -1,0 +1,29 @@
+<ul class="list-group" *ngIf="plots$ | async as plots">
+<span *ngIf="plots && plots.length > 0 else noPlots">
+<mat-card fxFlex="32" style="margin-left: 10px;" class="plot-content example-card" *ngFor="let plot of plots">
+  <h4>Plot: {{plot.id}}</h4>
+  <mat-card >
+    Size(hectare): {{plot.plotSize}} <br>Resolution: {{plot.plotResolution}}  <br>Tenderness: {{plot.plotTenderness}}  <br>Volume: {{plot.volume}} <br> Average Tree Height(meters): {{plot.averageTreeHeight}}
+    </mat-card>
+  <br>
+  <div *ngFor="let subItem of plot.treeTypes">
+				<mat-card>{{ subItem.tree.name }}: {{ subItem.percentage.value }}% </mat-card>
+			</div>
+  &nbsp;
+  <mat-card-actions align="start">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <button mat-button type="button" class="btn btn-outline-danger" (click)="delete(plot)">Delete</button>  &nbsp;
+    <button mat-button type="button" class="btn btn-outline-danger" (click)="update()" > Update </button>
+  </mat-card-actions>
+</mat-card>
+</span>
+</ul>
+
+
+<ng-template #noPlots>
+  <h5>No Plots found</h5>
+</ng-template>
+
+<ng-template #loading>
+  <p *ngIf="!error else errorTemp">....loading</p>
+  <ng-template #errorTemp>{{error?.message}}</ng-template>
+</ng-template>

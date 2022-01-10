@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iiauction-house": {
+      "hosting": {
+        "IIAuctionHouse-Front-End-Reworked": [
+          "iiauction-house"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iiauction-house"
+  }
+}
