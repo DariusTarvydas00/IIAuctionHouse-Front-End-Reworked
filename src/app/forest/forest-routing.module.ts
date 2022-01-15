@@ -6,6 +6,7 @@ import {PlotComponent} from "./plot/plot/plot.component";
 import {PlotEditorComponent} from "./plot/plot-editor/plot-editor.component";
 import {ForestComponent} from "./forest/forest.component";
 import {ForestEditorComponent} from "./forest-editor/forest-editor.component";
+import {ForestListComponent} from "./forest-list/forest-list.component";
 
 const routes: Routes = [
   // {path: 'percentages', loadChildren: () =>
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'percentages', component: PercentageComponent},
   {path: 'plots', component: PlotComponent},
   {path: 'plot-editor', component: PlotEditorComponent},
-  {path: 'forest-editor', component: ForestEditorComponent}
+  {path: 'forest-editor', component: ForestEditorComponent},
+  {path: 'forest-list', component: ForestListComponent}
 ]
 
 @NgModule({

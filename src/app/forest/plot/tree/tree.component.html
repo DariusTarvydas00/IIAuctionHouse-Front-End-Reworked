@@ -11,6 +11,17 @@
   </ul>
 </div>
 
+
+
+<ng-template #noTrees>
+  <h5>No Trees found</h5>
+</ng-template>
+
+<ng-template #loading>
+  <p *ngIf="!error else errorTemp">....loading</p>
+  <ng-template #errorTemp>{{error?.message}}</ng-template>
+</ng-template>
+
 <br>
 
 <div>
@@ -45,14 +56,6 @@
     </form>
 </div>
 
-<ng-template #noTrees>
-  <h5>No Trees found</h5>
-</ng-template>
-
-<ng-template #loading>
-  <p *ngIf="!error else errorTemp">....loading</p>
-  <ng-template #errorTemp>{{error?.message}}</ng-template>
-</ng-template>
 
 <!--<form [formGroup]="treeTypeForm" (ngSubmit)="onSubmit()">-->
 <!--  <p>-->
