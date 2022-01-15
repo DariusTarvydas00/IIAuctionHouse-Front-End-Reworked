@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../../../environments/environment";
-import {PlotDto} from "../../../models/plot.dto";
+import {environment} from "../../../../environments/environment";
+import {PlotDto} from "../../models/plotDto/plot.dto";
 
 @Injectable({
   providedIn: 'root'

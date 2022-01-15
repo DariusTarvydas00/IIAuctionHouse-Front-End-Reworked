@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
-import {PlotDto} from "../../core/models/plot.dto";
-import {PlotService} from "../../core/services/forest/plot/plot.service";
-import {TreeTypeDto} from "../../core/models/treeType.dto";
+import {PlotDto} from "../../core/models/plotDto/plot.dto";
+import {PlotService} from "../../core/services/plotService/plot.service";
+import {TreeTypeDto} from "../../core/models/treeTypeDto/treeType.dto";
 import {ForestService} from "../../core/services/forest/forest.service";
 
 @Component({

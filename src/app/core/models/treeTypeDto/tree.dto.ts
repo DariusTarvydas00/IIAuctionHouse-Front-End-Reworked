@@ -1,4 +1,4 @@
 export interface TreeDto {
-  Id: number;
+  id: number;
   name: string;
 }

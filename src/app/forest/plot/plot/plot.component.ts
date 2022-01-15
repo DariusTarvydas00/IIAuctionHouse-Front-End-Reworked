@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError, Observable} from "rxjs";
-import {PlotDto} from "../../../core/models/plot.dto";
-import {PlotService} from "../../../core/services/forest/plot/plot.service";
+import {PlotDto} from "../../../core/models/plotDto/plot.dto";
+import {PlotService} from "../../../core/services/plotService/plot.service";
 
 @Component({
   selector: 'app-auction-house-plot',
@@ -10,7 +10,12 @@ import {PlotService} from "../../../core/services/forest/plot/plot.service";
   styleUrls: ['./plot.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
+
 export class PlotComponent implements OnInit {
+
+  @Input() f=new EventEmitter<any>()
+
   plotForm: FormGroup = new FormGroup({
     plotSize: new FormControl('')
   });
@@ -25,6 +30,10 @@ export class PlotComponent implements OnInit {
   plot = 0;
 
   constructor(private _plotService: PlotService, private fb: FormBuilder) {
+  }
+
+  sendD(){
+    this.f.emit(this.plots$)
   }
 
   ngOnInit(): void {

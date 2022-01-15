@@ -1,4 +1,4 @@
-import {TreeTypeDto} from "./treeType.dto";
+import {TreeTypeDto} from "../treeTypeDto/treeType.dto";
 
 export interface PlotDto{
   id: number;

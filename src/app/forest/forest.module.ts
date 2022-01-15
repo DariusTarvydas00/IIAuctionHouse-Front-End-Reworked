@@ -9,23 +9,29 @@ import {MatListModule} from "@angular/material/list";
 import {PlotModule} from "./plot/plot.module";
 import { ForestComponent } from './forest/forest.component';
 import { ForestEditorComponent } from './forest-editor/forest-editor.component';
+import { ForestCardComponent } from './forest-card/forest-card.component';
+import {MatCardModule} from "@angular/material/card";
+import { ForestListComponent } from './forest-list/forest-list.component';
 
 @NgModule({
   declarations: [
-  
+
     ForestComponent,
-       ForestEditorComponent
+       ForestEditorComponent,
+       ForestCardComponent,
+       ForestListComponent
   ],
-  imports: [
-    CommonModule,
-    ForestRoutingModule,
-    ReactiveFormsModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    FormsModule,
-    MatListModule,
-    PlotModule
-  ]
+    imports: [
+        CommonModule,
+        ForestRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        FormsModule,
+        MatListModule,
+        PlotModule,
+        MatCardModule
+    ]
 })
 export class ForestModule { }

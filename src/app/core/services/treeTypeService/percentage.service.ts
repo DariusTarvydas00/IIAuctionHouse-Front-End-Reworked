@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../../../../environments/environment";
-import {PercentageDto} from "../../../models/percentage.dto";
+import {environment} from "../../../../environments/environment";
+import {PercentageDto} from "../../models/treeTypeDto/percentage.dto";
 
 @Injectable({
   providedIn: 'root'

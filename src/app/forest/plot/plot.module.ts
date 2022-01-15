@@ -6,6 +6,9 @@ import { PercentageComponent } from './percentage/percentage.component';
 import { PlotComponent } from './plot/plot.component';
 import {MatCardModule} from "@angular/material/card";
 import { PlotEditorComponent } from './plot-editor/plot-editor.component';
+import {MatIconModule} from "@angular/material/icon";
+import { TreeTypeCardComponent } from './tree-type-card/tree-type-card.component';
+import { PlotCardComponent } from './plot-card/plot-card.component';
 
 
 
@@ -14,6 +17,12 @@ import { PlotEditorComponent } from './plot-editor/plot-editor.component';
     TreeComponent,
     PercentageComponent,
     PlotComponent,
+    PlotEditorComponent,
+    TreeTypeCardComponent,
+    PlotCardComponent,
+  ],
+  exports: [
+    TreeTypeCardComponent,
     PlotEditorComponent
   ],
   imports: [
@@ -21,6 +30,7 @@ import { PlotEditorComponent } from './plot-editor/plot-editor.component';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
+    MatIconModule,
   ]
 })
 export class PlotModule { }

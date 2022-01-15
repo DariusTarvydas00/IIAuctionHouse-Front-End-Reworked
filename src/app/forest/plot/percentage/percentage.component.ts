@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError, Observable} from "rxjs";
-import {PercentageDto} from "../../../core/models/percentage.dto";
-import {PercentageService} from "../../../core/services/forest/plot/percentage.service";
+import {PercentageDto} from "../../../core/models/treeTypeDto/percentage.dto";
+import {PercentageService} from "../../../core/services/treeTypeService/percentage.service";
 
 @Component({
   selector: 'app-auction-house-percentage',
   templateUrl: './percentage.component.html',
   styleUrls: ['./percentage.component.css']
 })
+
 export class PercentageComponent implements OnInit {
+
+
   percentageForm: FormGroup = new FormGroup({
     name: new FormControl('')
   });
@@ -20,7 +23,12 @@ export class PercentageComponent implements OnInit {
   percentages$: Observable<PercentageDto[]> | undefined;
   percentageSelection: any;
 
-  constructor(private _percentageService: PercentageService, private fb: FormBuilder) {
+  @Output() f = new EventEmitter<any>()
+
+
+  constructor(public _percentageService: PercentageService, private fb: FormBuilder) {
+    this.getAllPercentages();
+    this.percentages$ = this._percentageService.getAllPercentages()
   }
 
   ngOnInit(): void {
@@ -65,6 +73,7 @@ export class PercentageComponent implements OnInit {
 
   onChange($event: any) {
     this.selection = $event.id;
+    this.f.emit(this.selection)
   }
 
   delete() {

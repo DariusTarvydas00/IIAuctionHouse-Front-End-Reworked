@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "plotSize": 10,
+  "plotResolution": "string",
+  "plotTenderness": 10,
+  "volume": 10,
+  "averageTreeHeight": 10,
+  "treeTypes": [
+    {
+      "id": 1,
+      "tree": {
+        "id": 1,
+        "name": "Pine"
+      },
+      "percentage": {
+        "id": 1,
+        "value": 10
+      }
+    }
+  ]
+}

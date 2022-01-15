@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {catchError, Observable} from "rxjs";
-import {TreeDto} from "../../../core/models/tree.dto";
-import {TreeService} from "../../../core/services/forest/plot/tree.service";
+import {TreeDto} from "../../../core/models/treeTypeDto/tree.dto";
+import {TreeService} from "../../../core/services/treeTypeService/tree.service";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -23,6 +23,7 @@ export class TreeComponent implements OnInit {
 
   trees$: Observable<TreeDto[]> | undefined;
   treeSelection: any;
+  @Output() f = new EventEmitter<any>()
 
   constructor(private _treeService: TreeService, private fb: FormBuilder) {
   }
@@ -69,6 +70,7 @@ export class TreeComponent implements OnInit {
 
   onChange($event: any) {
     this.selection = $event.id;
+    this.f.emit(this.selection)
   }
 
   delete() {

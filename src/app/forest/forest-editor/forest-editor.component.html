@@ -1,3 +1,196 @@
+<app-auction-house-forest-card></app-auction-house-forest-card>
+
+<div class="forestForm">
+<h1>Forest Form</h1>
+<form [formGroup]="forestForm" >
+
+  <div class="form-group">
+    <label for="qqq">Forest Id</label>
+    <input type="number" id="qqq" value="id" formControlName="id" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="www">Forest Group</label>
+    <input type="text" id="www" value="forestGroup" formControlName="forestGroup" class="form-control">
+  </div>
+
+  <form [formGroup]="forestryEnterpriseForm" >
+  <div class="form-group">
+    <label for="eee">ForEnterId</label>
+    <input type="text" id="eee" value="id" formControlName="id" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="rrr">For Ent name</label>
+    <input type="text" id="rrr" value="name" formControlName="name" class="form-control">
+  </div>
+  </form>
+
+
+  <form [formGroup]="forestLocationForm" >
+  <div class="form-group">
+    <label for="ttt">loc id</label>
+    <input type="number" id="ttt" value="id" formControlName="id" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="yyy">for X</label>
+    <input type="number" id="yyy" value="geoLocationX" formControlName="geoLocationX" class="form-control">
+  </div>
+    <div class="form-group">
+      <label for="asa">for Y</label>
+      <input type="number" id="asa" value="geoLocationY" formControlName="geoLocationY" class="form-control">
+    </div>
+  </form>
+
+
+
+  <form [formGroup]="forestUidForm" >
+    <div class="form-group">
+      <div class="form-group">
+        <label for="hhh">FUId Id</label>
+        <input type="number" id="hhh" value="id" formControlName="id" class="form-control">
+      </div>
+        <div class="form-group">
+          <label for="uuu">Tree Id</label>
+          <input type="number" id="uuu" value="firstUid" formControlName="firstUid" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="iii">Tree Name</label>
+          <input type="number" id="iii" value="secondUid" formControlName="secondUid" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="sds">Tree Id</label>
+          <input type="number" id="sds" value="thirdUid" formControlName="thirdUid" class="form-control">
+        </div>
+      </div>
+  </form>
+
+
+  <form [formGroup]="bidForm" >
+        <div class="form-group">
+          <label for="lll">forest bid Id</label>
+          <input type="number" id="lll" value="id" formControlName="id" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="mmm">forest bid amount Value</label>
+          <input type="number" id="mmm" value="bidAmount" formControlName="bidAmount" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="nnn">forest bid date Value</label>
+          <input type="number" id="nnn" value="bidDateTime" formControlName="bidDateTime" class="form-control">
+        </div>
+  </form>
+
+<!--<h1>Plot Form</h1>-->
+<!--<form [formGroup]="plotForm" >-->
+<!--    <div class="form-group">-->
+<!--      <label for="plotId">Plot Id</label>-->
+<!--      <input type="number" id="plotId" value="id" formControlName="id" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="plotSize">Plot Size</label>-->
+<!--      <input type="number" id="plotSize" value="plotSize" formControlName="plotSize" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="plotResolution">Plot Resolution</label>-->
+<!--      <input type="text" id="plotResolution" value="plotResolution" formControlName="plotResolution" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="plotTenderness">Plot Tenderness</label>-->
+<!--      <input type="number" id="plotTenderness" value="plotTenderness" formControlName="plotTenderness" class="form-control">-->
+<!--    </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="volume">Plot Volume</label>-->
+<!--    <input type="number" id="volume" value="volume" formControlName="volume" class="form-control">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="averageTreeHeight">Plot Average Tree Height</label>-->
+<!--    <input type="number" id="averageTreeHeight" value="averageTreeHeight" formControlName="averageTreeHeight" class="form-control">-->
+<!--  </div>-->
+<!--  <div formGroupName="treeType">-->
+<!--  <div formGroupName="tree">-->
+<!--  <div class="form-group">-->
+<!--    <div formGroupName="tree">-->
+<!--      <div class="form-group">-->
+<!--        <label for="asd">Tree Id</label>-->
+<!--        <input type="number" id="asd" value="id" formControlName="id" class="form-control">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="sdf">Tree Name</label>-->
+<!--        <input type="text" id="sdf" value="name" formControlName="name" class="form-control">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div formGroupName="percentage">-->
+<!--      <div class="form-group">-->
+<!--        <label for="dfg">Percentage Id</label>-->
+<!--        <input type="number" id="dfg" value="id" formControlName="id" class="form-control">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="hjk">Percentage Value</label>-->
+<!--        <input type="number" id="hjk" value="value" formControlName="value" class="form-control">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--  </div>-->
+</form>
+
+</div>
+
+<!--<h1>Tree Type Form</h1>-->
+<!--<form [formGroup]="treeTypeForm" >-->
+<!--  <div formGroupName="tree">-->
+<!--    <div class="form-group">-->
+<!--      <label for="idOfTree">Tree Id</label>-->
+<!--      <input type="number" id="idOfTree" value="id" formControlName="id" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="nameOfTree">Tree Name</label>-->
+<!--      <input type="text" id="nameOfTree" value="name" formControlName="name" class="form-control">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div formGroupName="percentage">-->
+<!--    <div class="form-group">-->
+<!--      <label for="ifOfPercentage">Percentage Id</label>-->
+<!--      <input type="number" id="ifOfPercentage" value="id" formControlName="id" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="valueOfPercentage">Percentage Value</label>-->
+<!--      <input type="number" id="valueOfPercentage" value="value" formControlName="value" class="form-control">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+
+<!--<h1>Tree Form</h1>-->
+<!--<form [formGroup]="treeForm" >-->
+<!--  <div class="form-group">-->
+<!--    <label for="treeId">Tree Id</label>-->
+<!--    <input type="number" id="treeId" value="id" formControlName="id" class="form-control">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="treeName">Tree Name</label>-->
+<!--    <input type="text" id="treeName" value="name" formControlName="name" class="form-control">-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<!--<h1>Percentage Form</h1>-->
+<!--<form [formGroup]="percentageForm" >-->
+<!--    <div class="form-group">-->
+<!--      <label for="percentId">Percentage id</label>-->
+<!--      <input type="number" id="percentId" value="id" formControlName="id" class="form-control">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="percentageValue">Percentage Value</label>-->
+<!--      <input type="number" id="percentageValue" value="value" formControlName="value" class="form-control">-->
+<!--    </div>-->
+<!--</form>-->
+
+
+<!--</form>-->
+
+
+
 <div class="register-form">
   <form [formGroup]="plotForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -88,195 +281,3 @@
     </div>
   </form>
 </div>
-
-
-<div class="form-group">
-</div>
-
-<h1>Forest Form</h1>
-<form [formGroup]="forestForm" >
-
-  <div class="form-group">
-    <label for="qqq">Forest Id</label>
-    <input type="number" id="qqq" value="id" formControlName="id" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="www">Forest Group</label>
-    <input type="text" id="www" value="forestGroup" formControlName="forestGroup" class="form-control">
-  </div>
-
-  <form [formGroup]="forestryEnterpriseForm" >
-  <div class="form-group">
-    <label for="eee">ForEnterId</label>
-    <input type="text" id="eee" value="id" formControlName="id" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="rrr">For Ent name</label>
-    <input type="text" id="rrr" value="name" formControlName="name" class="form-control">
-  </div>
-  </form>
-
-
-  <form [formGroup]="forestLocationForm" >
-  <div class="form-group">
-    <label for="ttt">loc id</label>
-    <input type="number" id="ttt" value="id" formControlName="id" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="yyy">for X</label>
-    <input type="number" id="yyy" value="geoLocationX" formControlName="geoLocationX" class="form-control">
-  </div>
-    <div class="form-group">
-      <label for="asa">for Y</label>
-      <input type="number" id="asa" value="geoLocationY" formControlName="geoLocationY" class="form-control">
-    </div>
-  </form>
-
-
-
-  <form [formGroup]="forestUidForm" >
-    <div class="form-group">
-      <div class="form-group">
-        <label for="hhh">FUId Id</label>
-        <input type="number" id="hhh" value="id" formControlName="id" class="form-control">
-      </div>
-        <div class="form-group">
-          <label for="uuu">Tree Id</label>
-          <input type="number" id="uuu" value="firstUid" formControlName="firstUid" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="iii">Tree Name</label>
-          <input type="number" id="iii" value="secondUid" formControlName="secondUid" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="sds">Tree Id</label>
-          <input type="number" id="sds" value="thirdUid" formControlName="thirdUid" class="form-control">
-        </div>
-      </div>
-  </form>
-
-
-  <form [formGroup]="bidForm" >
-        <div class="form-group">
-          <label for="lll">forest bid Id</label>
-          <input type="number" id="lll" value="id" formControlName="id" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="mmm">forest bid amount Value</label>
-          <input type="number" id="mmm" value="bidAmount" formControlName="bidAmount" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <label for="nnn">forest bid date Value</label>
-          <input type="number" id="nnn" value="bidDateTime" formControlName="bidDateTime" class="form-control">
-        </div>
-  </form>
-
-<h1>Plot Form</h1>
-<form [formGroup]="plotForm" >
-    <div class="form-group">
-      <label for="plotId">Plot Id</label>
-      <input type="number" id="plotId" value="id" formControlName="id" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="plotSize">Plot Size</label>
-      <input type="number" id="plotSize" value="plotSize" formControlName="plotSize" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="plotResolution">Plot Resolution</label>
-      <input type="text" id="plotResolution" value="plotResolution" formControlName="plotResolution" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="plotTenderness">Plot Tenderness</label>
-      <input type="number" id="plotTenderness" value="plotTenderness" formControlName="plotTenderness" class="form-control">
-    </div>
-  <div class="form-group">
-    <label for="volume">Plot Volume</label>
-    <input type="number" id="volume" value="volume" formControlName="volume" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="averageTreeHeight">Plot Average Tree Height</label>
-    <input type="number" id="averageTreeHeight" value="averageTreeHeight" formControlName="averageTreeHeight" class="form-control">
-  </div>
-<!--  <div formGroupName="treeType">-->
-<!--  <div formGroupName="tree">-->
-<!--  <div class="form-group">-->
-<!--    <div formGroupName="tree">-->
-<!--      <div class="form-group">-->
-<!--        <label for="asd">Tree Id</label>-->
-<!--        <input type="number" id="asd" value="id" formControlName="id" class="form-control">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="sdf">Tree Name</label>-->
-<!--        <input type="text" id="sdf" value="name" formControlName="name" class="form-control">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div formGroupName="percentage">-->
-<!--      <div class="form-group">-->
-<!--        <label for="dfg">Percentage Id</label>-->
-<!--        <input type="number" id="dfg" value="id" formControlName="id" class="form-control">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="hjk">Percentage Value</label>-->
-<!--        <input type="number" id="hjk" value="value" formControlName="value" class="form-control">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  </div>-->
-<!--  </div>-->
-</form>
-
-
-
-<h1>Tree Type Form</h1>
-<form [formGroup]="treeTypeForm" >
-  <div formGroupName="tree">
-    <div class="form-group">
-      <label for="idOfTree">Tree Id</label>
-      <input type="number" id="idOfTree" value="id" formControlName="id" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="nameOfTree">Tree Name</label>
-      <input type="text" id="nameOfTree" value="name" formControlName="name" class="form-control">
-    </div>
-  </div>
-  <div formGroupName="percentage">
-    <div class="form-group">
-      <label for="ifOfPercentage">Percentage Id</label>
-      <input type="number" id="ifOfPercentage" value="id" formControlName="id" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="valueOfPercentage">Percentage Value</label>
-      <input type="number" id="valueOfPercentage" value="value" formControlName="value" class="form-control">
-    </div>
-  </div>
-</form>
-
-<h1>Tree Form</h1>
-<form [formGroup]="treeForm" >
-  <div class="form-group">
-    <label for="treeId">Tree Id</label>
-    <input type="number" id="treeId" value="id" formControlName="id" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="treeName">Tree Name</label>
-    <input type="text" id="treeName" value="name" formControlName="name" class="form-control">
-  </div>
-</form>
-
-
-<h1>Percentage Form</h1>
-<form [formGroup]="percentageForm" >
-    <div class="form-group">
-      <label for="percentId">Percentage id</label>
-      <input type="number" id="percentId" value="id" formControlName="id" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="percentageValue">Percentage Value</label>
-      <input type="number" id="percentageValue" value="value" formControlName="value" class="form-control">
-    </div>
-</form>
-
-
-</form>
