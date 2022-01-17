@@ -10,22 +10,35 @@ import { RouterModule } from '@angular/router';
 //http
 import { HttpClientModule} from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
-import { RegisterForestComponent } from './register-forest/register-forest.component';
+import { RegisterForestComponent } from './components/register-forest/register-forest.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {SettingsModule} from "./settings/settings.module";
+import {MatCardModule} from "@angular/material/card";
+import { RegisterPlotComponent } from './components/register-plot/register-plot.component';
+import {ForestUidModule} from "./settings/forestUid/forest-uids.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterForestComponent,
+    RegisterPlotComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    SettingsModule,
+    MatCardModule,
+    ForestUidModule
   ],
   providers: [],
+  exports: [
+    RegisterForestComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
