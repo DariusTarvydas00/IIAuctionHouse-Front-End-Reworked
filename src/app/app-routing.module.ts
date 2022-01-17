@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
+import {RegisterForestComponent} from "./components/register-forest/register-forest.component";
+import {RegisterPlotComponent} from "./components/register-plot/register-plot.component";
 
 const routes: Routes = [
-  {path: 'registerForest', loadChildren: () =>
-      import('./register-forest/register-forest.module')
-        .then(f => f.RegisterForestModule)},
-  {path: 'forests', loadChildren: () =>
-      import('./forest/forest.module')
-        .then(f => f.ForestModule)},
   {path: 'settings', loadChildren: () =>
       import('./settings/settings.module')
-        .then(f => f.SettingsModule)}
+        .then(f => f.SettingsModule)},
+  {path: 'register-forest', component: RegisterForestComponent},
+  {path: 'register-plot', component: RegisterPlotComponent},
 
 ];
 
