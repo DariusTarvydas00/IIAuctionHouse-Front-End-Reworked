@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {catchError, Observable} from "rxjs";
-import {ForestGroupDto} from "../../../core/models/forestGroupDto";
-import {ForestGroupService} from "../../../core/services/forest-group.service";
+import {GroupDto} from "../../../core/models/forestDetailModels/forestGroupModels/groupModels/groupDto";
+import {ForestGroupService} from "../../../core/services/forestDetailServices/forestGroupServices/forest-group.service";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -15,7 +15,7 @@ export class ForestGroupEditorComponent implements OnInit {
     name: new FormControl('')
   });
 
-  forestGroups$: Observable<ForestGroupDto[]> | undefined;
+  forestGroups$: Observable<GroupDto[]> | undefined;
   forestGroupSelection: any;
   selection!: number;
   submitted = false;
@@ -26,7 +26,7 @@ export class ForestGroupEditorComponent implements OnInit {
   constructor(private _forestGroupService: ForestGroupService, private fb: FormBuilder) {
     this.forestGroupForm = this.fb.group({
       Id:[''],
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern(/^[A-Za-z]+$/)]],
+      forestGroupName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern(/^[A-Za-z]+$/)]],
     });
   }
 

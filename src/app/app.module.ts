@@ -10,12 +10,12 @@ import { RouterModule } from '@angular/router';
 //http
 import { HttpClientModule} from "@angular/common/http";
 import { SharedModule } from "./shared/shared.module";
-import { RegisterForestComponent } from './components/register-forest/register-forest.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SettingsModule} from "./settings/settings.module";
 import {MatCardModule} from "@angular/material/card";
-import { RegisterPlotComponent } from './components/register-plot/register-plot.component';
-import {ForestUidModule} from "./settings/forestUid/forest-uids.module";
+import {RegisterForestComponent} from "./settings/register-forest/register-forest.component";
+import {ForestListComponent} from "./settings/forest-list/forest-list.component";
+import {RegisterPlotComponent} from "./settings/register-plot/register-plot.component";
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import {ForestUidModule} from "./settings/forestUid/forest-uids.module";
     AppComponent,
     RegisterForestComponent,
     RegisterPlotComponent,
+    ForestListComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import {ForestUidModule} from "./settings/forestUid/forest-uids.module";
     ReactiveFormsModule,
     SettingsModule,
     MatCardModule,
-    ForestUidModule
+    FormsModule
   ],
   providers: [],
   exports: [

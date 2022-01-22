@@ -1,4 +1,4 @@
 export interface ForestGroupDto {
   id: number;
-  name: string;
+  forestGroupName: string;
 }
