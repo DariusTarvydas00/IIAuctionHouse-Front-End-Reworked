@@ -16,6 +16,9 @@ import {MatCardModule} from "@angular/material/card";
 import {RegisterForestComponent} from "./settings/register-forest/register-forest.component";
 import {ForestListComponent} from "./settings/forest-list/forest-list.component";
 import {RegisterPlotComponent} from "./settings/register-plot/register-plot.component";
+import {
+  ForestryEnterpriseSelectionComponent
+} from "./selective-options/forestDetailsSelections/forestry-enterprise-selection/forestry-enterprise-selection.component";
 
 
 @NgModule({
@@ -24,6 +27,7 @@ import {RegisterPlotComponent} from "./settings/register-plot/register-plot.comp
     RegisterForestComponent,
     RegisterPlotComponent,
     ForestListComponent,
+    ForestryEnterpriseSelectionComponent,
   ],
   imports: [
     BrowserModule,
