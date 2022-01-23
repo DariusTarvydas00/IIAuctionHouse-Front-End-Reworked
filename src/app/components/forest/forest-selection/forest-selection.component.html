@@ -1,0 +1,49 @@
+<div class="center">
+  <div class="list-group" *ngIf="forests$ | async as forests">
+    <span *ngIf="forests && forests.length > 0 else noForests">
+      <div [ngModel]="forestSelection"  ngDefaultControl>
+        <div *ngFor="let forest of forests; let i=index">
+          <mat-card class="plot-content example-card" (click)="onSelectCard(i, forest)" [ngClass]="{'highlight' : selected[i], 'not-highlight' : !selected[i]}">
+<!--            <h3>Forest: {{forest.forestUid.firstUid.value}}:{{forest.forestUid.secondUid.value}}/{{forest.forestUid.thirdUid.value}}</h3>-->
+            <mat-card>
+              <h5>
+                Forest Details:  <label>Forest Unique Identification Number: {{forest.forestUid.firstUid.value}} : {{forest.forestUid.secondUid.value}}  /  {{forest.forestUid.thirdUid.value}}</label>
+              </h5>
+              <div>
+                <label>Forestry Enterprise: {{forest.forestryEnterprise.name}}</label>&nbsp; &nbsp; &nbsp;
+                <label>Group: {{forest.forestGroupSubGroup.group.forestGroupName}}    {{forest.forestGroupSubGroup.subGroup.forestSubGroupName}}</label>&nbsp; &nbsp; &nbsp;
+                <label>Location: X:{{forest.forestLocation.geoLocationX}}; Y:{{forest.forestLocation.geoLocationY}}</label> &nbsp; &nbsp; &nbsp;
+              </div>
+            </mat-card>
+            <br>
+            <h3>Plots:</h3>
+            <mat-card>
+               <div *ngFor="let plot of forest.plots">
+                   <div>
+                     <label>Size: {{plot.plotSize}}</label> &nbsp; &nbsp; &nbsp;
+                     <label>Volume: {{plot.volume}}</label> &nbsp; &nbsp; &nbsp;
+                     <label>Tenderness: {{plot.plotTenderness}}</label>
+                   </div>
+                 <div>
+                   <label>Resolution: {{plot.plotResolution}}</label> &nbsp; &nbsp; &nbsp;
+                   <label>Average Tree Height: {{plot.averageTreeHeight}}</label>
+                 </div>
+                 <h5>Tree Types:</h5>
+                 <mat-card>
+                   <div *ngFor="let treeType of plot.treeTypes">
+                     <label>{{treeType.tree.name}}</label> &nbsp; : &nbsp; <label>{{treeType.percentage.value}}</label>
+                   </div>
+                 </mat-card>
+               </div>
+            </mat-card>
+          </mat-card>
+        </div>
+        <button type="button" class="btn btn-outline-danger" (click)="confirmSelection()" > Confirm Selection </button>
+      </div>
+    </span>
+  </div>
+</div>
+
+<ng-template #noForests>
+  <h5>No Forests found</h5>
+</ng-template>

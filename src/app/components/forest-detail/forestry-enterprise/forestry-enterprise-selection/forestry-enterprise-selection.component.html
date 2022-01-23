@@ -1,0 +1,25 @@
+<fieldset>
+  <div>
+    <tr class="table table-hover table-bordered">
+      <td>
+        <div>
+          <ul class="list-group" *ngIf="forestryEnterprises$ | async as forestryEnterprises">
+  <span *ngIf="forestryEnterprises && forestryEnterprises.length > 0 else noEnterprises">
+    <select [ngModel]="forestryEnterpriseSelection" (ngModelChange)="onChange($event)">
+      <option disabled selected value="undefined">Choose Forestry Enterprise...</option>
+      <option *ngFor="let forestryEnterprise of forestryEnterprises" [ngValue]="forestryEnterprise">
+        {{forestryEnterprise.name}}
+      </option>
+    </select>
+  </span>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </div>
+</fieldset>
+
+<ng-template #noEnterprises>
+  <h5>No Forestry Enterprise found</h5>
+</ng-template>
+

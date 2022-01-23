@@ -1,0 +1,52 @@
+<div class="center">
+  <mat-card class="plot-content example-card">
+    <div class="forestForm">
+      <h2>Register Forest</h2>
+
+      <form [formGroup]="forestForm" (ngSubmit)="onSubmit()">
+
+        <form formGroupName="forestUidPostDto" >
+          <label>Forest Unique Identification number:</label>
+          <div class="input-group">
+            <!--              <app-auction-house-forest-uid-selector (firstUid)="getForestFirstUid($event)"> </app-auction-house-forest-uid-selector>-->
+            <!--                            &nbsp;<app-auction-house-forest-uid-selector (firstUid)="getForestFirstUid($event)" (secondUId)="getForestSecondUid($event)" (thirdUid)="getForestThirdUid($event)"></app-auction-house-forest-uid-selector> &nbsp; <h1>/</h1> &nbsp;-->
+          </div>
+        </form>
+
+        <mat-card class="main-div" >
+          <fieldset>
+            <div>
+              <tr class="table table-hover table-bordered">
+                <td>
+                  <div class="form-group">
+                    <label>Forest Group:</label>
+                    <app-auction-house-forest-group (g)='getForestGroup($event)' (sg)='getForestryEnterprise($event)'></app-auction-house-forest-group>
+                  </div>
+                </td>
+                <td>
+                <div class="form-group">
+                  <label>ForestryEnterprise:</label>
+                  <app-auction-house-forestry-enterprise-selection (fe)='getForestryEnterprise($event)'></app-auction-house-forestry-enterprise-selection>
+            </div>
+              </tr>
+            </div>
+          </fieldset>
+        </mat-card>
+
+        <form formGroupName="forestLocationPostDto" >
+          <label>Forest GeoLocation:</label>
+          <div class="input-group">
+            &nbsp;<input type="number" id="forestGeoLocationX" value="geoLocationX" placeholder="Example: 20.20215465" formControlName="geoLocationX" class="form-control"> &nbsp; <h1>;</h1> &nbsp;
+            <input type="number" id="forestGeoLocationY" value="geoLocationY" placeholder="Example: 158.20215465" formControlName="geoLocationY" class="form-control"> &nbsp; <h1>;</h1> &nbsp;
+          </div>
+        </form>
+
+        <button type="submit" class="btn btn-secondary" > Register Forest </button>
+        <button type="button" (click)="onReset()" class="btn btn-info float-right">Reset Forest Form</button>
+      </form>
+    </div>
+  </mat-card>
+</div>
+
+
+<!--<app-auction-house-plot-selection (plot)="getPlots($event)"></app-auction-house-plot-selection>-->

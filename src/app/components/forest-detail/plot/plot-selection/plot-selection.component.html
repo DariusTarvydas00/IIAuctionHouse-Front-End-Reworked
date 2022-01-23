@@ -1,0 +1,37 @@
+<div class="center">
+  <div class="list-group" *ngIf="plots$ | async as plots">
+    <span *ngIf="plots && plots.length > 0 else noPlots">
+      <div [ngModel]="plotSelection"  ngDefaultControl>
+        <div *ngFor="let plot of plots; let i=index">
+          <mat-card class="plot-content example-card" (click)="onSelectCard(i, plot)" [ngClass]="{'highlight' : selected[i], 'not-highlight' : !selected[i]}">
+            <h3>Plot Form:</h3>
+            <mat-card>
+              <h5>Plot Details: </h5>
+              <div>
+                <label>Size: {{plot.plotSize}}</label> &nbsp; &nbsp; &nbsp;
+                <label>Volume: {{plot.volume}}</label> &nbsp; &nbsp; &nbsp;
+                <label>Tenderness: {{plot.plotTenderness}}</label>
+              </div>
+              <div>
+                <label>Resolution: {{plot.plotResolution}}</label> &nbsp; &nbsp; &nbsp;
+                <label>Average Tree Height: {{plot.averageTreeHeight}}</label>
+              </div>
+            </mat-card>
+            <br>
+            <mat-card>
+              <h5>Tree Types:</h5>
+               <div *ngFor="let treeType of plot.treeTypes">
+                   <label>{{treeType.tree.name}}</label> &nbsp; : &nbsp; <label>{{treeType.percentage.value}}</label>
+               </div>
+            </mat-card>
+          </mat-card>
+        </div>
+        <button type="button" class="btn btn-outline-danger" (click)="confirmSelection()" > Confirm Selection </button>
+      </div>
+    </span>
+  </div>
+</div>
+
+<ng-template #noPlots>
+  <h5>No Plots found</h5>
+</ng-template>

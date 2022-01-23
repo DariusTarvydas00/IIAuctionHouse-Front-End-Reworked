@@ -1,0 +1,43 @@
+<div class="center">
+  <mat-card class="plot-content example-card main-div">
+    <div class="register-form">
+      <form [formGroup]="plotForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Plot Size:</label>
+          <input type="number" placeholder="Example: 1.2" formControlName="plotSize" class="form-control">
+          <label>Plot Resolution:</label>
+          <input type="text" placeholder="Example: 135x325" formControlName="plotResolution" class="form-control">
+          <label>Plot Tenderness:</label>
+          <input type="number" placeholder="Example: 0.7" formControlName="plotTenderness" class="form-control">
+          <label>Plot Volume:</label>
+          <input type="number" placeholder="Example: 158.20215465" formControlName="volume" class="form-control">
+          <label>Average Tree Height:</label>
+          <input type="number" placeholder="Example: 158.20215465" formControlName="averageTreeHeight" class="form-control">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-secondary" > Add </button>
+          <button type="button" (click)="onReset()" class="btn btn-info float-right">Reset</button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>
+
+<!--        <mat-card class="main-div" >-->
+<!--          <fieldset>-->
+<!--            <div>-->
+<!--              <tr class="form-control" class="table table-hover table-bordered">-->
+<!--                <td>-->
+<!--                  <div class="form-group">-->
+<!--                    <label>Forest Group:</label>-->
+<!--&lt;!&ndash;                    <app-auction-house-register-forest (f)='getForest($event)'></app-auction-house-register-forest>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <div class="form-group">-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--            </div>-->
+<!--          </fieldset>-->
+<!--        </mat-card>-->
