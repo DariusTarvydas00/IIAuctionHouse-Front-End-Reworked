@@ -1,0 +1,38 @@
+<div>
+  <ul class="list-group" *ngIf="forestryEnterprises$ | async as forestryEnterprises">
+  <span *ngIf="forestryEnterprises && forestryEnterprises.length > 0 else noEnterprises">
+    <select [ngModel]="forestryEnterpriseSelection" (ngModelChange)="onChange($event)">
+      <option disabled selected value="undefined">Choose Forestry Enterprise...</option>
+      <option *ngFor="let forestryEnterprise of forestryEnterprises" [ngValue]="forestryEnterprise">
+        {{forestryEnterprise.name}}
+      </option>
+    </select>
+  </span>
+  </ul>
+</div>
+
+<div>
+  <form [formGroup]="forestryEnterpriseForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Forestry Enterprise Name:</label>
+      <input type="text" formControlName="name" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && forestryEnterpriseFormValue['name'].errors }">
+    </div>
+    <div *ngIf="submitted && forestryEnterpriseFormValue['name'].errors" class="invalid-feedback">
+      <div *ngIf="forestryEnterpriseFormValue['name'].errors['required']">Forestry Enterprise name is required</div>
+      <div *ngIf="forestryEnterpriseFormValue['name'].errors['minlength']">Forestry Enterprise Name must be at least 2 characters</div>
+      <div *ngIf="forestryEnterpriseFormValue['name'].errors['maxlength']">Forestry Enterprise must not exceed 20 characters</div>
+      <div *ngIf="forestryEnterpriseFormValue['name'].errors['pattern']">Forestry Enterprise must not contain characters or numbers</div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-secondary" > Add </button>  &nbsp;
+      <button type="button" class="btn btn-outline-danger" (click)="update()"> Update </button> &nbsp;
+      <button type="button" class="btn btn-outline-danger" (click)="delete()"> Delete </button>
+      <button type="button" (click)="onReset()" class="btn btn-info float-right"> Reset </button>
+    </div>
+  </form>
+</div>
+
+<ng-template #noEnterprises>
+  <h5>No Forestry Enterprise found</h5>
+</ng-template>

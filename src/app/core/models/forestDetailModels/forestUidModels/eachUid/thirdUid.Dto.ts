@@ -1,4 +1,4 @@
-export interface ForestUidDto {
+export interface ThirdUidDto {
   id: number;
   value:number;
 }
