@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from "@angular/material/tabs";
-import { HeaderComponent } from "./layout/header/header.component";
-import {RouterModule} from "@angular/router";
+import { HeaderComponent } from './layout/header/header.component';
 import {FooterComponent} from "./layout/footer/footer.component";
-import { ListErrorsComponent } from './list-errors/list-errors.component';
+import {ComponentsModule} from "../components/components.module";
+import {RouterModule} from "@angular/router";
+import {ForestModule} from "../components/forest/forest.module";
 
 
 
 @NgModule({
   declarations: [
+
     HeaderComponent,
-    FooterComponent,
-    ListErrorsComponent
+    FooterComponent
   ],
   imports: [
     CommonModule,
     MatTabsModule,
-    RouterModule
+    ComponentsModule,
+    RouterModule,
+    ForestModule,
   ],
   exports: [
     MatTabsModule,
     HeaderComponent,
     FooterComponent,
-    ListErrorsComponent
   ]
 })
 export class SharedModule { }

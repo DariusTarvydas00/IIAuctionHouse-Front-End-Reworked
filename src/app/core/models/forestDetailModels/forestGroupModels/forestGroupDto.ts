@@ -1,4 +1,8 @@
-export interface ForestGroupDto {
+import {GroupDto} from "./groupModels/groupDto";
+import {SubGroupDto} from "./groupModels/subGroup.dto";
+
+export interface ForestGroupSubGroup {
   id: number;
-  forestGroupName: string;
+  group: GroupDto;
+  subGroup: SubGroupDto
 }

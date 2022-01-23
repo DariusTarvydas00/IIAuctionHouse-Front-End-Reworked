@@ -1,25 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
-import {RegisterForestComponent} from "./settings/register-forest/register-forest.component";
-import {ForestListComponent} from "./settings/forest-list/forest-list.component";
-import {RegisterPlotComponent} from "./settings/register-plot/register-plot.component";
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import {ComponentsModule} from "./components/components.module";
+import {NgModule} from "@angular/core";
+import {RegisterPlotComponent} from "./components/register-plot/register-plot.component";
 
 const routes: Routes = [
-  {path: 'settings', loadChildren: () =>
-      import('./settings/settings.module')
-        .then(f => f.SettingsModule)},
-  {path: 'register-forest', component: RegisterForestComponent},
-  {path: 'register-plot', component: RegisterPlotComponent},
-  {path: 'forest-list', component: ForestListComponent},
+     { path: 'welcomePage', component: WelcomePageComponent },
+  // { path: '**', redirectTo: '/welcomePage' },
+  // { path: 'asd', component: RegisterPlotComponent },
+  { path: 'components', loadChildren: () =>
+      import('./components/components.module')
+        .then(f => f.ComponentsModule)},
 
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes),
-    CommonModule
+    RouterModule.forRoot(routes, { enableTracing: true }),
+    ComponentsModule
   ],
   exports: [
     RouterModule
