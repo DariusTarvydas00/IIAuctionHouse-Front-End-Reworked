@@ -1,0 +1,17 @@
+<div>
+  <ul class="list-group" *ngIf="percentages$ | async as percentages">
+  <span *ngIf="percentages && percentages.length > 0 else noPercentages">
+    <select [ngModel]="percentageSelection" (ngModelChange)="getPercentage($event)">
+      <option disabled selected value="undefined">Choose Percentage</option>
+      <option *ngFor="let percentage of percentages" [ngValue]="percentage">
+        {{percentage.value}}
+      </option>
+    </select>
+  </span>
+  </ul>
+</div>
+
+<ng-template #noPercentages>
+  <h5>No Percentages found</h5>
+</ng-template>
+
