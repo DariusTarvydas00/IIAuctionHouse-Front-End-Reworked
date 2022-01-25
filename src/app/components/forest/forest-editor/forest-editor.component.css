@@ -1,0 +1,50 @@
+.mat-card {
+  background: rgba(162, 176, 131, 0.39);
+  max-width: content-box;
+}
+
+.allCard{
+  padding-top: 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.table{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hideBorder {
+  border:1px solid rgba(255, 255, 255, 0);
+}
+
+.hideBorderTRB{
+  padding-top: 30px;
+  border-top:1px solid rgba(255, 255, 255, 0);
+  border-right:1px solid rgba(255, 255, 255, 0);
+  border-bottom:1px solid rgba(255, 255, 255, 0);
+}
+
+.fieldset{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.background {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-image: url("../../../../assets/forest.jpg");
+}
+

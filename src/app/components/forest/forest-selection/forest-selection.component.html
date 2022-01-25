@@ -14,27 +14,27 @@
                 <label>Group: {{forest.forestGroupSubGroup.group.forestGroupName}}    {{forest.forestGroupSubGroup.subGroup.forestSubGroupName}}</label>&nbsp; &nbsp; &nbsp;
                 <label>Location: X:{{forest.forestLocation.geoLocationX}}; Y:{{forest.forestLocation.geoLocationY}}</label> &nbsp; &nbsp; &nbsp;
               </div>
-            </mat-card>
-            <br>
-            <h3>Plots:</h3>
-            <mat-card>
-               <div *ngFor="let plot of forest.plots">
-                   <div>
-                     <label>Size: {{plot.plotSize}}</label> &nbsp; &nbsp; &nbsp;
-                     <label>Volume: {{plot.volume}}</label> &nbsp; &nbsp; &nbsp;
-                     <label>Tenderness: {{plot.plotTenderness}}</label>
-                   </div>
-                 <div>
-                   <label>Resolution: {{plot.plotResolution}}</label> &nbsp; &nbsp; &nbsp;
-                   <label>Average Tree Height: {{plot.averageTreeHeight}}</label>
-                 </div>
-                 <h5>Tree Types:</h5>
-                 <mat-card>
-                   <div *ngFor="let treeType of plot.treeTypes">
-                     <label>{{treeType.tree.name}}</label> &nbsp; : &nbsp; <label>{{treeType.percentage.value}}</label>
-                   </div>
-                 </mat-card>
-               </div>
+               <br>
+<!--            <h3>Plots:</h3>-->
+<!--            <mat-card>-->
+<!--&lt;!&ndash;               <div *ngFor="let plot of forest.plots">&ndash;&gt;-->
+<!--              &lt;!&ndash;                   <div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                     <label>Size: {{plot.plotSize}}</label> &nbsp; &nbsp; &nbsp;&ndash;&gt;-->
+<!--              &lt;!&ndash;                     <label>Volume: {{plot.volume}}</label> &nbsp; &nbsp; &nbsp;&ndash;&gt;-->
+<!--              &lt;!&ndash;                     <label>Tenderness: {{plot.plotTenderness}}</label>&ndash;&gt;-->
+<!--              &lt;!&ndash;                   </div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                 <div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                   <label>Resolution: {{plot.plotResolution}}</label> &nbsp; &nbsp; &nbsp;&ndash;&gt;-->
+<!--              &lt;!&ndash;                   <label>Average Tree Height: {{plot.averageTreeHeight}}</label>&ndash;&gt;-->
+<!--              &lt;!&ndash;                 </div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                 <h5>Tree Types:</h5>&ndash;&gt;-->
+<!--              &lt;!&ndash;                 <mat-card>&ndash;&gt;-->
+<!--              &lt;!&ndash;                   <div *ngFor="let treeType of plot.treeTypes">&ndash;&gt;-->
+<!--              &lt;!&ndash;                     <label>{{treeType.tree.name}}</label> &nbsp; : &nbsp; <label>{{treeType.percentage.value}}</label>&ndash;&gt;-->
+<!--              &lt;!&ndash;                   </div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                 </mat-card>&ndash;&gt;-->
+<!--              &lt;!&ndash;               </div>&ndash;&gt;-->
+<!--            </mat-card>-->
             </mat-card>
           </mat-card>
         </div>

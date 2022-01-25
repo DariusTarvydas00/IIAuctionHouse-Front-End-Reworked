@@ -20,7 +20,7 @@ import {ComponentsModule} from "./components/components.module";
     RouterModule,
     HttpClientModule,
     SharedModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

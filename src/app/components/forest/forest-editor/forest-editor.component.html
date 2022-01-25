@@ -1,45 +1,71 @@
-<div class="center">
+<body class="background">
+<div class="allCard">
   <mat-card class="plot-content example-card">
     <div class="forestForm">
       <h2>Register Forest</h2>
-
       <form [formGroup]="forestForm" (ngSubmit)="onSubmit()">
+        <mat-card class="main-div">
+          <fieldset class="fieldset">
+            <div>
+              <tr class="table table-hover table-bordered hideBorder">
+                <td class="hideBorder">
+                  <form formGroupName="forestUid" >
+                    <label class="label">Forest Unique Identification number:</label>
+                    <div class="input-group">
+                      <app-auction-house-forest-uid-selection (f)='getFirst($event)' (s)='getSecond($event)'(t)='getThird($event)'> </app-auction-house-forest-uid-selection>
+                    </div>
+                  </form>
+                </td>
+            </div>
+          </fieldset>
+        </mat-card>
 
-        <form formGroupName="forestUidPostDto" >
-          <label>Forest Unique Identification number:</label>
-          <div class="input-group">
-            <!--              <app-auction-house-forest-uid-selector (firstUid)="getForestFirstUid($event)"> </app-auction-house-forest-uid-selector>-->
-            <!--                            &nbsp;<app-auction-house-forest-uid-selector (firstUid)="getForestFirstUid($event)" (secondUId)="getForestSecondUid($event)" (thirdUid)="getForestThirdUid($event)"></app-auction-house-forest-uid-selector> &nbsp; <h1>/</h1> &nbsp;-->
-          </div>
-        </form>
+        &nbsp;
 
         <mat-card class="main-div" >
-          <fieldset>
+          <fieldset class="fieldset">
             <div>
-              <tr class="table table-hover table-bordered">
-                <td>
-                  <div class="form-group">
-                    <label>Forest Group:</label>
-                    <app-auction-house-forest-group (g)='getForestGroup($event)' (sg)='getForestryEnterprise($event)'></app-auction-house-forest-group>
-                  </div>
+              <tr class="table table-hover table-bordered hideBorder">
+                <td class="hideBorder">
+                  <form formGroupName="forestGroupSubGroup" >
+                    <label class="label">Forest Group:</label>
+                    <div class="input-group">
+                      <app-auction-house-forest-group (g)='getGroup($event)' (sg)='getSubGroup($event)'   ></app-auction-house-forest-group>
+                    </div>
+                  </form>
                 </td>
-                <td>
-                <div class="form-group">
-                  <label>ForestryEnterprise:</label>
-                  <app-auction-house-forestry-enterprise-selection (fe)='getForestryEnterprise($event)'></app-auction-house-forestry-enterprise-selection>
-            </div>
+                <td class="hideBorderTRB">
+                  <label class="label">Forestry Enterprise:</label>
+                  <div class="form-group">
+                    <app-auction-house-forestry-enterprise-selection (fe)='getForestryEnterprise($event)'></app-auction-house-forestry-enterprise-selection>
+                </div>
               </tr>
             </div>
           </fieldset>
         </mat-card>
 
-        <form formGroupName="forestLocationPostDto" >
-          <label>Forest GeoLocation:</label>
-          <div class="input-group">
-            &nbsp;<input type="number" id="forestGeoLocationX" value="geoLocationX" placeholder="Example: 20.20215465" formControlName="geoLocationX" class="form-control"> &nbsp; <h1>;</h1> &nbsp;
-            <input type="number" id="forestGeoLocationY" value="geoLocationY" placeholder="Example: 158.20215465" formControlName="geoLocationY" class="form-control"> &nbsp; <h1>;</h1> &nbsp;
-          </div>
-        </form>
+        &nbsp;
+
+        <mat-card class="main-div" >
+          <fieldset class="fieldset">
+            <div>
+              <tr class="table table-hover table-bordered hideBorder">
+                <td class="hideBorder">
+                  <div class="form-group">
+                    <form formGroupName="forestLocation" >
+                      <label class="label">Forest Geo Location:</label>
+                      <div class="input-group">
+                        &nbsp;<input type="number" id="forestGeoLocationX" value="geoLocationX" placeholder="Example: 20.20215465" formControlName="geoLocationX" class="form-control"> &nbsp; <h1></h1> &nbsp;
+                        <input type="number" id="forestGeoLocationY" value="geoLocationY" placeholder="Example: 158.20215465" formControlName="geoLocationY" class="form-control"> &nbsp; <h1></h1> &nbsp;
+                      </div>
+                    </form>
+                  </div>
+              </tr>
+            </div>
+          </fieldset>
+        </mat-card>
+
+        <p></p>
 
         <button type="submit" class="btn btn-secondary" > Register Forest </button>
         <button type="button" (click)="onReset()" class="btn btn-info float-right">Reset Forest Form</button>
@@ -47,6 +73,4 @@
     </div>
   </mat-card>
 </div>
-
-
-<!--<app-auction-house-plot-selection (plot)="getPlots($event)"></app-auction-house-plot-selection>-->
+</body>

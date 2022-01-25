@@ -1,50 +1,60 @@
-<div>
-  <ul class="list-group" *ngIf="firstUidList$ | async as forestFirstUids">
-  <span *ngIf="forestFirstUids && forestFirstUids.length > 0 else noforestFirstUids">
-    <select [ngModel]="forestFirstUidSelection" (ngModelChange)="onChange($event)">
-      <option disabled selected value="undefined">Choose Forest Uid...</option>
-      <option *ngFor="let forestFirstUid of forestFirstUids" [ngValue]="forestFirstUid">
-        {{forestFirstUid.firstUid.value}}
-      </option>
-    </select>
-  </span>
-  </ul>
-</div>
-
-<div>
-  <ul class="list-group" *ngIf="secondUidList$ | async as forestSecondUids">
-  <span *ngIf="forestSecondUids && forestSecondUids.length > 0 else noforestSecondUids">
-    <select [ngModel]="forestSecondUidSelection" (ngModelChange)="onChange($event)">
-      <option disabled selected value="undefined">Choose Forest Uid...</option>
-      <option *ngFor="let forestSecondUid of forestSecondUids" [ngValue]="forestSecondUid">
-        {{forestSecondUid.secondUid.value}}
-      </option>
-    </select>
-  </span>
-  </ul>
-</div>
-
-<div>
-  <ul class="list-group" *ngIf="thirdUidList$ | async as forestThirdUids">
-  <span *ngIf="forestThirdUids && forestThirdUids.length > 0 else noforestThirdUids">
-    <select [ngModel]="forestThirdUidSelection" (ngModelChange)="onChange($event)">
-      <option disabled selected value="undefined">Choose Forest Uid...</option>
-      <option *ngFor="let forestThirdUid of forestThirdUids" [ngValue]="forestThirdUid">
-        {{forestThirdUid.thirdUid.value}}
-      </option>
-    </select>
-  </span>
-  </ul>
-</div>
+<fieldset>
+  <div>
+    <tr class="table table-hover table-bordered hideBorder">
+      <td class="hideBorder">
+        <div>
+          <ul class="list-group" *ngIf="firstUidList$ | async as forestFirstUids">
+            <span *ngIf="forestFirstUids && forestFirstUids.length > 0 else noforestFirstUids">
+              <select [ngModel]="forestFirstUidSelection" (ngModelChange)="selectFirst($event)">
+                <option disabled selected value="undefined">Choose Forest Uid</option>
+                <option *ngFor="let forestFirstUid of forestFirstUids" [ngValue]="forestFirstUid">
+                  {{forestFirstUid.value}}
+                </option>
+              </select>
+            </span>
+          </ul>
+        </div>
+      </td>
+      <td class="hideBorder">
+        <div>
+          <ul class="list-group" *ngIf="secondUidList$ | async as forestSecondUids">
+            <span *ngIf="forestSecondUids && forestSecondUids.length > 0 else noforestSecondUids">
+              <select [ngModel]="forestSecondUidSelection" (ngModelChange)="selectSecond($event)">
+                <option disabled selected value="undefined">Choose Forest Uid</option>
+                <option *ngFor="let forestSecondUid of forestSecondUids" [ngValue]="forestSecondUid">
+                  {{forestSecondUid.value}}
+                </option>
+              </select>
+            </span>
+          </ul>
+        </div>
+      </td>
+      <td class="hideBorder">
+        <div>
+          <ul class="list-group" *ngIf="thirdUidList$ | async as forestThirdUids">
+            <span *ngIf="forestThirdUids && forestThirdUids.length > 0 else noforestThirdUids">
+              <select [ngModel]="forestThirdUidSelection" (ngModelChange)="selectThird($event)">
+                <option disabled selected value="undefined">Choose Forest Uid</option>
+                <option *ngFor="let forestThirdUid of forestThirdUids" [ngValue]="forestThirdUid">
+                  {{forestThirdUid.value}}
+                </option>
+              </select>
+            </span>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </div>
+</fieldset>
 
 <ng-template #noforestFirstUids>
-  <h5>No Forest Unique ids found</h5>
+  <h5>No Forest First Unique ids found</h5>
 </ng-template>
 
 <ng-template #noforestSecondUids>
-  <h5>No Forest Unique ids found</h5>
+  <h5>No Forest Second Unique ids found</h5>
 </ng-template>
 
 <ng-template #noforestThirdUids>
-  <h5>No Forest Unique ids found</h5>
+  <h5>No Forest Third Unique ids found</h5>
 </ng-template>

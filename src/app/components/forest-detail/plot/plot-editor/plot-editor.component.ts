@@ -13,18 +13,14 @@ import {PercentageService} from "../../../../core/services/forestDetailServices/
 export class PlotEditorComponent implements OnInit {
 
   percentages$: Observable<PercentageDto[]> | undefined;
-  plotForm: FormGroup = new FormGroup({
-    volume: new FormControl(''),
-    averageTreeHeight: new FormControl(''),
-    plotSize: new FormControl(''),
-    plotTenderness: new FormControl(''),
-    plotResolution: new FormControl(''),
-    treeTypeDto: this.fb.array([])
-  });
+  plotForm: FormGroup;
   error: any;
-  count: number[] = [0];
+  tableIndex: any;
+  count: number[] = [];
   treeType: FormArray = new FormArray([]);
   treeTypeList: any[] = []
+  percentageList: any[] = []
+  treeList:any[] = []
 
   treeTypeForm = new FormGroup({
     tree: this.fb.group({
@@ -35,10 +31,22 @@ export class PlotEditorComponent implements OnInit {
     })
   });
 
+
+
   @Output() plots = new EventEmitter<any>()
-  noSelection = true;
+  rowIndex: any;
+  displayedColumns: any;
 
   constructor(private _plotService: PlotService, private fb: FormBuilder, private _percentageService: PercentageService) {
+    this.plotForm = new FormGroup({
+      volume: new FormControl(''),
+      averageTreeHeight: new FormControl(''),
+      plotSize: new FormControl(''),
+      plotTenderness: new FormControl(''),
+      plotResolution: new FormControl(''),
+      treeTypes: new FormArray([]),
+      forestId: new FormControl('')
+    });
   }
 
   ngOnInit(): void {
@@ -54,30 +62,34 @@ export class PlotEditorComponent implements OnInit {
   }
 
   addTreeTypes() {
-    this.noSelection = false;
-    let number = this.count.length
-    this.count.push(number)
-    this.getAllPercentages()
+    this.count.push(this.tableIndex)
+    console.log(this.count)
   }
 
-  getTreeSelection(data: any) {
-    const tree = this.treeTypeForm.controls['tree'] as FormGroup;
-    tree.controls['id'].setValue(data)
+  getTreeSelection($event: any) {
+    this.treeList[this.tableIndex]=$event
   }
 
-  getPercentageSelection(data: any) {
-    const percentage = this.treeTypeForm.controls['percentage'] as FormGroup;
-    percentage.controls['id'].setValue(data)
+  getPercentageSelection($event: any) {
+    this.percentageList[this.tableIndex]=$event
   }
 
   onSubmit() {
+    console.log(this.plotForm.value)
     if (this.plotForm.invalid) {
       return;
     }
-    let asd = this.plotForm.get('treeTypeDto') as FormArray;
-    for (let asda of this.treeTypeList){
-      asd.push(asda)
+
+    for(var i = 1; i <= this.count.length; i++){
+      if (this.percentageList[i] != null && this.treeList[i] !=null){
+        const control = <FormArray>this.plotForm.get('treeTypes')
+        control.push(this.fb.group({
+          tree:this.treeList[i],
+          percentage:this.percentageList[i]
+        }))
+      }
     }
+    console.log(this.plotForm.value)
     this._plotService.createPlot(this.plotForm.value).pipe().subscribe(
       err => {
         this.error = err;
@@ -85,20 +97,28 @@ export class PlotEditorComponent implements OnInit {
     );
   }
 
+
+  update() {
+    // this.plotForm.controls['id'].setValue(this.selection);
+    // this._plotService.updatePlot(this.selection,this.plotForm.value).pipe().subscribe(
+    //   err => {
+    //     this.error = err;
+    //   }
+    // );
+    // this.selection = 0;
+  }
+
   onReset(): void {
     window.location.reload()
   }
 
   deleteTreeType(i: number) {
-    const tree = this.plotForm.controls['treeTypeDto'] as FormArray;
-    tree.removeAt(i)
-    this.treeTypeList.splice(i, 1);
-    this.count.splice(i, 1);
+    this.treeList.splice(this.tableIndex, 1);
+    this.percentageList.splice(this.tableIndex, 1);
+    this.count.splice(this.tableIndex)
   }
 
-  saveSelectedOption() {
-    //this.treeType.push(this.treeTypeForm);
-    this.treeTypeList[this.treeTypeList.length] = this.treeTypeForm
-    this.noSelection = true;
+  logIndex(i: number) {
+    this.tableIndex = i
   }
 }

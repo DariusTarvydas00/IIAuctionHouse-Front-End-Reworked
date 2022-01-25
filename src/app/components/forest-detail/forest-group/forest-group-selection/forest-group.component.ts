@@ -1,10 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {catchError, Observable} from "rxjs";
 import {GroupDto} from "../../../../core/models/forestDetailModels/forestGroupModels/groupModels/groupDto";
-import {
-  ForestGroupService
-} from "../../../../core/services/forestDetailServices/forestGroupServices/forest-group.service";
+import {ForestGroupService} from "../../../../core/services/forestDetailServices/forestGroupServices/forest-group.service";
 import {SubGroupDto} from "../../../../core/models/forestDetailModels/forestGroupModels/groupModels/subGroup.dto";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-auction-house-forest-group',
@@ -17,15 +16,25 @@ export class ForestGroupComponent implements OnInit {
   subGroupList$: Observable<SubGroupDto[]> | undefined;
   groupSelection: any;
   subGroupSelection: any;
-  selectiong!: number;
-  selectionsg!: number;
+  selectionGroup!: number;
+  selectionSubGroup!: number;
   error: any;
   submitted = false;
 
-  @Output() g = new EventEmitter<any>()
-  @Output() sg = new EventEmitter<any>()
+  group:any
+  subGroup:any
 
-  constructor(private _forestGroupService: ForestGroupService) {
+  forestGroup = new FormGroup({
+    group: this.fb.group({
+      id: new FormControl('')}),
+    subGroup: this.fb.group({
+      id: new FormControl('')})
+  })
+
+  @Output() g = new EventEmitter<{group: number}>()
+  @Output() sg = new EventEmitter<{subGroup: number}>()
+
+  constructor(private _forestGroupService: ForestGroupService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -51,11 +60,12 @@ export class ForestGroupComponent implements OnInit {
       )
   }
 
-  onChange($event: any) {
-    this.selectiong = $event.id;
-    this.g.emit(this.selectionsg);
-    this.selectionsg = $event.id;
-    this.sg.emit(this.selectionsg);
+  selectedGroup($event: any) {
+      this.g.emit({group:$event});
+  }
+
+  selectedSubGroup($event: any) {
+    this.sg.emit({subGroup:$event});
   }
 
 }

@@ -1,0 +1,16 @@
+.background {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-image: url("../../assets/understory.jpg");
+}
+
+.title{
+  max-width: 500px;
+  margin: auto;
+  padding-top: 150px;
+  color: #fbeafc;
+
+}

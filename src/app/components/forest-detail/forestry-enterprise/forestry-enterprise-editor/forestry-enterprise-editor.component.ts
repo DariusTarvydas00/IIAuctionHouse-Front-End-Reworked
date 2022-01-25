@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {catchError, Observable} from "rxjs";
 import {ForestryEnterpriseDto} from "../../../../core/models/forestDetailModels/forestryEnterprise.dto";
 import {ForestryEnterpriseService} from "../../../../core/services/forestDetailServices/forestry-enterprise.service";
@@ -11,19 +11,14 @@ import {ForestryEnterpriseService} from "../../../../core/services/forestDetailS
 })
 export class ForestryEnterpriseEditorComponent implements OnInit {
 
-  forestryEnterpriseForm: FormGroup = new FormGroup({
-    name: new FormControl('')
-  });
-
+  forestryEnterpriseForm: FormGroup;
+  forestryEnterprise: any;
   forestryEnterprises$: Observable<ForestryEnterpriseDto[]> | undefined;
-  forestryEnterpriseSelection: any;
-  selection!: number;
   submitted = false;
   error: any;
 
   constructor(private _forestryEnterpriseService: ForestryEnterpriseService, private fb: FormBuilder) {
     this.forestryEnterpriseForm = this.fb.group({
-      Id:[''],
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.pattern(/^[A-Za-z]+$/)]],
     });
   }
@@ -41,10 +36,6 @@ export class ForestryEnterpriseEditorComponent implements OnInit {
       )
   }
 
-  onChange($event: any) {
-    this.selection = $event.id;
-  }
-
   get forestryEnterpriseFormValue(): { [key: string]: AbstractControl } {
     return this.forestryEnterpriseForm.controls;
   }
@@ -58,7 +49,7 @@ export class ForestryEnterpriseEditorComponent implements OnInit {
     this._forestryEnterpriseService.createTree(this.forestryEnterpriseForm.value).pipe().subscribe(
       err => {
         this.error = err;
-        this.getAllForestryEnterprises()
+        window.location.reload()
       }
     );
   }
@@ -70,23 +61,25 @@ export class ForestryEnterpriseEditorComponent implements OnInit {
 
 
   delete() {
-    this._forestryEnterpriseService.deleteTreeType(this.selection).pipe().subscribe(
+    this._forestryEnterpriseService.deleteTreeType(this.forestryEnterprise).pipe().subscribe(
       err => {
         this.error = err;
-        this.getAllForestryEnterprises()
+        window.location.reload()
       }
     );
-    this.selection = 0;
   }
 
   update() {
-    this.forestryEnterpriseForm.controls['Id'].setValue(this.selection);
-    this._forestryEnterpriseService.updateTree(this.selection,this.forestryEnterpriseForm.value).pipe().subscribe(
+    console.log(this.forestryEnterprise)
+    this._forestryEnterpriseService.updateTree(this.forestryEnterprise,this.forestryEnterpriseForm.value).pipe().subscribe(
       err => {
         this.error = err;
-        this.getAllForestryEnterprises()
+        window.location.reload()
       }
     );
-    this.selection = 0;
+  }
+
+  getForestryEnterprise($event: any) {
+    this.forestryEnterprise = $event.forestryEnterprise.id
   }
 }

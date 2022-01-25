@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  links = ['welcomePage', 'components/forest-selection', '#102'];
-  titles = ['Home', 'Check Forest Auction', 'Login'];
+  links = ['welcomePage', 'components/forest-selection', 'components/forest-editor', 'components/plot/plot-editor', 'login'];
+  titles = ['Home', 'Check Forest Auction', 'Forest Editor', 'Plot Editor', 'Login'];
   activeLink = this.links[1];
   myColor = 'primary';
 

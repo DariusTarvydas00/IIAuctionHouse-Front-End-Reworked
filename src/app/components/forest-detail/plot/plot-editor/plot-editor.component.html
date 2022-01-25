@@ -1,77 +1,60 @@
-<div class="register-form">
-  <form [formGroup]="plotForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group">
-      <label>Size:</label>
-      <input type="number" formControlName="plotSize" class="form-control">
-    </div>
+<body class="background">
+<div class="center">
+  <mat-card class="plot-content example-card main-div">
+    <form [formGroup]="plotForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label>Plot Size:</label>
+        <input type="number" placeholder="Example: 1.2" formControlName="plotSize" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Plot Resolution:</label>
+        <input type="text" placeholder="Example: 135x325" formControlName="plotResolution" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Plot Tenderness:</label>
+        <input type="number" placeholder="Example: 0.7" formControlName="plotTenderness" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Plot Volume:</label>
+        <input type="number" placeholder="Example: 158.20215465" formControlName="volume" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Average Tree Height:</label>
+        <input type="number" placeholder="Example: 158.20215465" formControlName="averageTreeHeight" class="form-control">
+      </div>
 
-    <div class="form-group">
-      <label>Resolution:</label>
-      <input type="text" formControlName="plotResolution" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Tenderness:</label>
-      <input type="number" formControlName="plotTenderness" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Volume:</label>
-      <input type="number" formControlName="volume" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <label>Average Tree Height:</label>
-      <input type="number" formControlName="averageTreeHeight" class="form-control">
-    </div>
-
-    <fieldset>
-      <div>
-        <tr class="form-control" class="table table-hover table-bordered" *ngFor="let row of count; let i=index ">
-          <div *ngIf="i">
-            <td>
-              <app-auction-house-tree-selection *ngIf="percentages$" (tree)='getTreeSelection($event)'></app-auction-house-tree-selection>
-            </td>
-            <td>
-              <app-auction-house-percentage-selection *ngIf="percentages$" (percentage)='getPercentageSelection($event)'></app-auction-house-percentage-selection>
-            </td>
-            <td>
-              <button (click)="saveSelectedOption()" class="btn btn-secondary" >Confirm</button>
-            </td>
-            <td>
-              <button (click)="deleteTreeType(i)" class="btn btn-secondary" >Delete Tree Type</button>
-            </td>
-          </div>
+      <div class="form-group">
+        <label>Forest Id:</label>
+        <input type="number" placeholder="Example: 158.20215465" formControlName="forestId" class="form-control">
+      </div>
+      <fieldset>
+        <div>
+          <tr class="form-control" class="table table-hover table-bordered" *ngFor="let row of count; let i=index " (click)="logIndex(i)"  >
+              <td>
+                <app-auction-house-tree-selection (t)='getTreeSelection($event)'></app-auction-house-tree-selection>
+              </td>
+              <td>
+                <app-auction-house-percentage-selection (p)='getPercentageSelection($event)'></app-auction-house-percentage-selection>
+              </td>
+              <td>
+                <button (click)="deleteTreeType(i)" class="btn btn-secondary" >Delete</button>
+              </td>
         </tr>
       </div>
     </fieldset>
-
-    <button type="submit" class="btn btn-secondary" > Add New Plot </button>
-    <button type="button" (click)="onReset()" class="btn btn-info float-right">Reset Plot Form</button>
-    <button (click)="addTreeTypes()" [disabled]="!noSelection" class="btn btn-secondary">Add Tree Types</button>
-    <br>
-    <br>
-  </form>
+      <fieldset>
+        <div>
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-secondary" > Add New Plot </button>
+              <button type="button" (click)="onReset()" class="btn btn-info float-right">Reset Plot Form</button>
+              <button type="button" (click)="addTreeTypes()"  class="btn btn-secondary">Add Tree Type</button>
+            </td>
+        </div>
+      </fieldset>
+      <br>
+      <br>
+    </form>
+  </mat-card>
 </div>
-<!--</form>-->
-<!--</div>-->
-
-<!--  <form [formGroup]="plotForm">-->
-<!--    <fieldset>-->
-<!--      <div>-->
-<!--        <tr class="form-control" class="table table-hover table-bordered" *ngFor="let row of count; let i=index ">-->
-<!--          <div *ngIf="i">-->
-<!--          <td>-->
-<!--            <app-auction-house-tree-selection *ngIf="percentages$" (tree)='getTreeSelection($event)'></app-auction-house-tree-selection>-->
-<!--          </td>-->
-<!--          <td>-->
-<!--            <app-auction-house-percentage-selection *ngIf="percentages$" (percentage)='getPercentageSelection($event)'></app-auction-house-percentage-selection>-->
-<!--          </td>-->
-<!--          <td>-->
-<!--            <button (click)="deleteTreeType(i)" class="btn btn-secondary">Delete Tree Type</button>-->
-
-<!--          </td>-->
-<!--          </div>-->
-<!--        </tr>-->
-<!--      </div>-->
-<!--    </fieldset>-->
+</body>
