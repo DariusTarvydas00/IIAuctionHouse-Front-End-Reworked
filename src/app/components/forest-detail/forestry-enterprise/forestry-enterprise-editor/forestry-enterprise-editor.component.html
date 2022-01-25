@@ -1,15 +1,4 @@
-<div>
-  <ul class="list-group" *ngIf="forestryEnterprises$ | async as forestryEnterprises">
-  <span *ngIf="forestryEnterprises && forestryEnterprises.length > 0 else noEnterprises">
-    <select [ngModel]="forestryEnterpriseSelection" (ngModelChange)="onChange($event)">
-      <option disabled selected value="undefined">Choose Forestry Enterprise...</option>
-      <option *ngFor="let forestryEnterprise of forestryEnterprises" [ngValue]="forestryEnterprise">
-        {{forestryEnterprise.name}}
-      </option>
-    </select>
-  </span>
-  </ul>
-</div>
+<app-auction-house-forestry-enterprise-selection (fe)="getForestryEnterprise($event)"></app-auction-house-forestry-enterprise-selection>
 
 <div>
   <form [formGroup]="forestryEnterpriseForm" (ngSubmit)="onSubmit()">

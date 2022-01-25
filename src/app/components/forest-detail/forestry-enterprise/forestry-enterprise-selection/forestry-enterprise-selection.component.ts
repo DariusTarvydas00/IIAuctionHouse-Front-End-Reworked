@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {catchError, Observable} from "rxjs";
 import {ForestryEnterpriseDto} from "../../../../core/models/forestDetailModels/forestryEnterprise.dto";
 import {ForestryEnterpriseService} from "../../../../core/services/forestDetailServices/forestry-enterprise.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-auction-house-forestry-enterprise-selection',
@@ -11,18 +12,22 @@ import {ForestryEnterpriseService} from "../../../../core/services/forestDetailS
 export class ForestryEnterpriseSelectionComponent implements OnInit {
 
   forestryEnterprises$: Observable<ForestryEnterpriseDto[]> | undefined;
-  selection!: number;
+
+  constructor(private _forestryEnterpriseService: ForestryEnterpriseService) {
+    this.forestryEnterpriseForm = new FormGroup({
+      id: new FormControl('',Validators.required)})
+  }
   error: any;
-  forestryEnterpriseSelection: any;
 
-  @Output() fe = new EventEmitter<any>()
+  forestryEnterpriseForm: FormGroup
 
-  constructor(private _forestryEnterpriseService: ForestryEnterpriseService) { }
+  @Output() fe = new EventEmitter<{forestryEnterprise: number}>()
+  forestryEnterprise: any;
+
 
   ngOnInit(): void {
     this.getAllForestryEnterprises()
   }
-
 
   getAllForestryEnterprises(){
     this.forestryEnterprises$ = this._forestryEnterpriseService.getAllTrees()
@@ -34,8 +39,6 @@ export class ForestryEnterpriseSelectionComponent implements OnInit {
   }
 
   onChange($event: any) {
-    this.selection = $event.id;
-    this.fe.emit($event);
+    this.fe.emit({forestryEnterprise: $event});
   }
-
 }

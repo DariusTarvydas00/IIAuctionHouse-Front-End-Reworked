@@ -1,0 +1,16 @@
+<div>
+  <ul class="list-group" *ngIf="trees$ | async as trees">
+  <span *ngIf="trees && trees.length > 0 else noTrees">
+    <select [ngModel]="treeSelection" (ngModelChange)="getTree($event)">
+      <option disabled selected value="undefined">Choose TreeType</option>
+      <option *ngFor="let tree of trees" [ngValue]="tree">
+        {{tree.name}}
+      </option>
+    </select>
+  </span>
+  </ul>
+</div>
+
+<ng-template #noTrees>
+  <h5>No Trees found</h5>
+</ng-template>

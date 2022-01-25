@@ -1,7 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {catchError, Observable} from "rxjs";
-import {ForestUidDto} from "../../../core/models/forestDetailModels/forestUidModels/forestUid.dto";
 import {ForestUidService} from "../../../core/services/forestDetailServices/forestUidServices/forest-uid.service";
+import {FirstUidDto} from "../../../core/models/forestDetailModels/forestUidModels/eachUid/firstUid.dto";
+import {SecondUidDto} from "../../../core/models/forestDetailModels/forestUidModels/eachUid/secondUid.dto";
+import {ThirdUidDto} from "../../../core/models/forestDetailModels/forestUidModels/eachUid/thirdUid.Dto";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-auction-house-forest-uid-selection',
@@ -10,19 +13,28 @@ import {ForestUidService} from "../../../core/services/forestDetailServices/fore
 })
 export class ForestUidSelectionComponent implements OnInit {
 
-  firstUidList$: Observable<ForestUidDto[]> | undefined;
-  secondUidList$: Observable<ForestUidDto[]> | undefined;
-  thirdUidList$: Observable<ForestUidDto[]> | undefined;
+  firstUidList$: Observable<FirstUidDto[]> | undefined;
+  secondUidList$: Observable<SecondUidDto[]> | undefined;
+  thirdUidList$: Observable<ThirdUidDto[]> | undefined;
+
+  forestUidForm = new FormGroup({
+      firstUid: this.fb.group({
+        id: new FormControl('',Validators.required)}),
+      secondUid: this.fb.group({
+        id: new FormControl('',Validators.required)}),
+      thirdUid: this.fb.group({
+        id: new FormControl('',Validators.required)}),
+  })
   error: any;
   forestFirstUidSelection: any;
   forestSecondUidSelection: any;
   forestThirdUidSelection: any;
 
-  @Output() firstUid = new EventEmitter<any>()
-  @Output() secondUid = new EventEmitter<any>()
-  @Output() thirdUid = new EventEmitter<any>()
+  @Output() private f = new EventEmitter<{firstUid: number } >()
+  @Output() private s = new EventEmitter<{secondUid: number } >()
+  @Output() private t = new EventEmitter<{ thirdUid: number } >()
 
-  constructor(public _forestUidService: ForestUidService) {
+  constructor(private _forestUidService: ForestUidService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -58,9 +70,15 @@ export class ForestUidSelectionComponent implements OnInit {
       )
   }
 
-  onChange($event: any) {
-    this.firstUid.emit($event)
-    this.secondUid.emit($event)
-    this.thirdUid.emit($event)
+  selectFirst($event: any) {
+    this.f.emit({firstUid:$event});
+  }
+
+  selectSecond($event: any) {
+    this.s.emit({secondUid:$event});
+  }
+
+  selectThird($event: any) {
+    this.t.emit({thirdUid:$event});
   }
 }

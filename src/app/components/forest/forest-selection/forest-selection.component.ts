@@ -43,6 +43,7 @@ export class ForestSelectionComponent implements OnInit {
       this.forestForms.splice(index, 1)
     }
   }
+
   confirmSelection() {
     this.plot.emit(this.forestForms)
   }

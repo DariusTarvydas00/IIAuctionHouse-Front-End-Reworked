@@ -3,23 +3,21 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "
 import {catchError, Observable} from "rxjs";
 import {TreeDto} from "../../../../../core/models/forestDetailModels/treeTypeDto/ttDto/treeDto";
 import {TreeService} from "../../../../../core/services/forestDetailServices/treeTypeServices/tree.service";
-import {$e} from "@angular/compiler/src/chars";
 
 @Component({
-  selector: 'app-auction-house-tree-editor',
-  templateUrl: './tree-editor.component.html',
-  styleUrls: ['./tree-editor.component.css']
+  selector: 'app-auction-house-tree-selection',
+  templateUrl: './tree-selection.component.html',
+  styleUrls: ['./tree-selection.component.css']
 })
-export class TreeEditorComponent implements OnInit {
+export class TreeSelectionComponent implements OnInit {
 
   treeForm: FormGroup;
   submitted = false;
-  selection!: number;
   error: any;
 
   trees$: Observable<TreeDto[]> | undefined;
   treeSelection: any;
-  @Output() f = new EventEmitter<any>()
+  @Output() t = new EventEmitter<{ tree: number }>()
 
   constructor(private _treeService: TreeService, private fb: FormBuilder) {
     this.treeForm = this.fb.group({
@@ -44,45 +42,12 @@ export class TreeEditorComponent implements OnInit {
     return this.treeForm.controls;
   }
 
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.treeForm.invalid) {
-      return;
-    }
-    this._treeService.createTree(this.treeForm.value).pipe().subscribe(
-      err => {
-        this.error = err;
-        window.location.reload()
-      }
-    );
-  }
-
   onReset(): void {
     this.submitted = false;
     this.treeForm.reset();
   }
 
-  delete() {
-    this._treeService.deleteTreeType(this.selection).pipe().subscribe(
-      err => {
-        this.error = err;
-        window.location.reload()
-      }
-    );
-  }
-
-  update() {
-    this._treeService.updateTree(this.selection,this.treeForm.value).pipe().subscribe(
-      err => {
-        this.error = err;
-        window.location.reload()
-      }
-    );
-  }
-
   getTree($event: any) {
-    this.selection = $event.id
-
+    this.t.emit($event);
   }
 }

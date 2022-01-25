@@ -2,7 +2,6 @@ import { RouterModule, Routes } from "@angular/router";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import {ComponentsModule} from "./components/components.module";
 import {NgModule} from "@angular/core";
-import {RegisterPlotComponent} from "./components/register-plot/register-plot.component";
 
 const routes: Routes = [
      { path: 'welcomePage', component: WelcomePageComponent },
@@ -17,7 +16,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes, { enableTracing: true }),
+    RouterModule.forRoot(routes),
     ComponentsModule
   ],
   exports: [

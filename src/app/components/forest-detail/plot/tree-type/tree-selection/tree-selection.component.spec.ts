@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeTypeSelectionComponent } from './tree-type-selection.component';
+import { TreeSelectionComponent } from './tree-selection.component';
 
-describe('TreeTypeSelectionComponent', () => {
-  let component: TreeTypeSelectionComponent;
-  let fixture: ComponentFixture<TreeTypeSelectionComponent>;
+describe('TreeSelectionComponent', () => {
+  let component: TreeSelectionComponent;
+  let fixture: ComponentFixture<TreeSelectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TreeTypeSelectionComponent ]
+      declarations: [ TreeSelectionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TreeTypeSelectionComponent);
+    fixture = TestBed.createComponent(TreeSelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

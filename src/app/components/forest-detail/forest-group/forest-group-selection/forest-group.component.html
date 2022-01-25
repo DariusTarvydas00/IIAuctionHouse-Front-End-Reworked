@@ -1,12 +1,12 @@
 <fieldset>
   <div>
-    <tr class="table table-hover table-bordered">
-      <td>
+    <tr class="table table-hover table-bordered hideBorder">
+      <td class="hideBorder">
         <div>
           <ul class="list-group" *ngIf="groupList | async as forestGroups">
             <span *ngIf="forestGroups && forestGroups.length > 0 else noForestGroups">
-              <select [ngModel]="groupSelection" (ngModelChange)="onChange($event)">
-                <option disabled selected value="undefined">Choose Forest Group...</option>
+              <select [ngModel]="groupSelection" (ngModelChange)="selectedGroup($event)">
+                <option disabled selected value="undefined">Select Forest Group</option>
                 <option *ngFor="let forestGroup of forestGroups" [ngValue]="forestGroup">
                   {{forestGroup.forestGroupName}}
                 </option>
@@ -15,12 +15,12 @@
           </ul>
         </div>
       </td>
-      <td>
+      <td class="hideBorder">
         <div>
           <ul class="list-group" *ngIf="subGroupList$ | async as subGroups">
             <span *ngIf="subGroups && subGroups.length > 0 else noSubGroups">
-              <select [ngModel]="subGroupSelection" (ngModelChange)="onChange($event)">
-                <option disabled selected value="undefined">Choose TreeType...</option>
+              <select [ngModel]="subGroupSelection" (ngModelChange)="selectedSubGroup($event)">
+                <option disabled selected value="undefined">Select Forest Sub Group</option>
                 <option *ngFor="let subGroup of subGroups" [ngValue]="subGroup">
                   {{subGroup.forestSubGroupName}}
                 </option>
@@ -40,3 +40,4 @@
 <ng-template #noForestGroups>
   <h5>No Forest Group found</h5>
 </ng-template>
+
